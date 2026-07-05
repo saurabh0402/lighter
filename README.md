@@ -23,3 +23,6 @@ Sync your smart bulbs to your laptop screen.
   python lighter.py
   ```
 - You would be asked to give screengrab permission, allow it. Lighter uses it to capture the screen to detect the color to be set.
+
+# References
+- [Loop testing](https://www.youtube.com/watch?v=IVdyt2pNxn8)
