@@ -9,3 +9,11 @@ def linear_to_rgb(arr):
     arr = np.where(arr <= 0.0031308, arr * 12.92, 1.055 * (arr ** (1 / 2.4)) - 0.055)
     arr = np.clip(arr*255, 0, 255)
     return arr.astype(np.int16)
+
+def get_brightness(color):
+    brightness = 0.2126 * color[0] + 0.7152 * color[1] + 0.0722 * color[2]
+
+    if brightness > 255:
+        return 255
+    
+    return brightness

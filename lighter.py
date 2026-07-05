@@ -2,7 +2,7 @@ import asyncio
 import numpy as np
 from helpers.screengrab_perm import get_screencast_node_id
 from helpers.screengrab_pipeline import build_pipeline, get_screengrab
-from helpers.color_converter import rgb_to_linear, linear_to_rgb
+from helpers.colors import rgb_to_linear, linear_to_rgb, get_brightness
 from pywizlight import discovery, wizlight, PilotBuilder
 from time import sleep
 import sys
@@ -27,7 +27,11 @@ async def main():
         bulb_color = linear_to_rgb(mean)
         bulb_color = (int(bulb_color[0]), int(bulb_color[1]), int(bulb_color[2]))
 
-        await light.turn_on(PilotBuilder(rgb=bulb_color))
+        new_brightness = get_brightness(bulb_color)
+        await light.turn_on(
+            PilotBuilder(rgb=bulb_color,
+            brightness=new_brightness)
+        )
         sleep(0.1)
 
 if __name__ == '__main__':
